@@ -13,9 +13,9 @@ var cursors;
 
 //Velocity
 var xVelocity = 0;
-var speedCap = 15;
-var speedMultiplier = 1;
-var deceleration = 0.25;
+var speedCap = 300;
+var speedMultiplier = 10;
+var deceleration = 0.1;
 
 //Initialize Tilemap
 var tilemap = new Array(10);
@@ -94,8 +94,8 @@ class GameWindow extends Component {
           cursors = this.input.keyboard.createCursorKeys();
         },
         update: function(time, delta) {
-          player.setGravity(0, 50*delta);
-          bot.setGravity(0, 50*delta);
+          player.setGravity(0, 1400);
+          bot.setGravity(0, 1400);
 
           //Player
           if (cursors.left.isDown)
@@ -124,10 +124,10 @@ class GameWindow extends Component {
 
           if (cursors.up.isDown && player.body.touching.down)
           {
-            player.setVelocityY(-30*delta);
+            player.setVelocityY(-700);
           }
           
-          player.setVelocityX(xVelocity*delta);
+          player.setVelocityX(xVelocity);
         }
       }
     }

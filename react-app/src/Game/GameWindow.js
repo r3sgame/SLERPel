@@ -3039,16 +3039,18 @@ class GameWindow extends Component {
 
           if (cursors.up.isDown && player.body.touching.down)
           {
-            player.setVelocityY(-700);
+            player.setVelocityY((-700/6)*delta);
             currentInputs = [currentInputs[0], currentInputs[1], 1];
           }
           
-          player.setVelocityX(xVelocity);
+          player.setVelocityX((xVelocity/6)*delta);
 
           //savedInputs[timestamp] = currentInputs;
 
           //Bot
           bot.setGravity(0, 1400);
+          
+          if(recording[timestamp] != null) {
           if (recording[timestamp][0] === 1)
           {
             if(botXVelocity > 0)
@@ -3079,12 +3081,12 @@ class GameWindow extends Component {
 
           if (recording[timestamp][2] === 1 && bot.body.touching.down)
           {
-            bot.setVelocityY(-700);
+            bot.setVelocityY((-700/6)*delta);
             currentInputs = [currentInputs[0], currentInputs[1], 1];
           }
 
-          bot.setVelocityX(botXVelocity);
-          
+          bot.setVelocityX((botXVelocity/6)*delta);
+        }
 
           timestamp += 1;
         }
